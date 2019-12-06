@@ -1,0 +1,19 @@
+<p>person works!</p>
+<table class="table table-hover table-info table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Person Id</th>
+            <th>Age</th>
+            <th>Name</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let h of person">
+            <td>{{h.personId}}</td>
+            <td>{{h.age}}</td>
+            <td>{{h.personName}}</td>
+            <button type="button" (click)="deletePerson(h)" class="btn btn-dark">Delete</button>
+        </tr>
+    </tbody>
+</table>

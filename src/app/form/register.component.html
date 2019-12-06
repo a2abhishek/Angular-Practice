@@ -1,0 +1,56 @@
+<p>register works!</p>
+<form #personForm="ngForm" (ngSubmit)="onSubmit()" noValidate>
+    <!-- {{personForm.value|json}}
+    <hr>
+    {{personObj|json}} -->
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="email" name="name" [(ngModel)]="personObj.personName" 
+            required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" >
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+            Name is required!
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="email" class="form-control" id="age" name="age" [(ngModel)]="personObj.age" pattern="^\d{2}$" 
+            required #age="ngModel" [class.is-invalid]="age.invalid && age.touched" >
+        <small class="text-danger" [class.d-none]="age.valid || age.untouched">
+            Age is required in number format (2 digits)!
+        </small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="personObj.email" 
+            required #email="ngModel" [class.is-invalid]="email.invalid && email.touched" >
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">
+            email is required!
+        </small>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" name="password" [(ngModel)]="personObj.password" 
+            required #password="ngModel" [class.is-invalid]="password.invalid && password.touched" >
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">
+            password is required!
+        </small>
+    </div>
+
+    <!-- <div class="form-group">
+        <label for="greet">Type of Greeting:</label>
+        <select id="greet" class="custom-select" name="greetings" ngModel required #greet="ngModel"
+        [class.is-invalid]="greet.invalid && greet.touched" >
+            <option value="" selected disabled>Select something</option>
+            <option *ngFor="let g of greetings" [value]="q">{{g}}</option>
+        </select>
+        <small class="text-danger" [class.d-none]="greet.valid || greet.untouched">
+                greet is required!
+            </small>
+    </div> -->
+
+
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-outline-primary" [disabled]="personForm.invalid">Submit</button>
+  </form>

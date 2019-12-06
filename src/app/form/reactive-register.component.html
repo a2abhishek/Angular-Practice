@@ -1,0 +1,45 @@
+<h2>Reactive Register form</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="personForm" noValidate>
+    <!-- {{personForm.value|json}}
+    <hr>
+    {{personObj|json}} -->
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" formControlName="personName" 
+            [class.is-invalid]="personName.invalid && personName.touched" >
+            <div *ngIf="personName.invalid && personName.touched">
+                <small *ngIf="personName.errors?.required" class="text-danger" >Name required!</small>
+                <small *ngIf="personName.errors?.minlength" class="text-danger">Name must be minimum of 3 letters!</small>
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="email" class="form-control" id="age" formControlName="age" pattern="^\d{2}$" 
+            [class.is-invalid]="age.invalid && age.touched" >
+        <small class="text-danger" [class.d-none]="age.valid || age.untouched">
+            Age is required in number format (2 digits)!
+        </small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" formControlName="email" 
+            [class.is-invalid]="email.invalid && email.touched" >
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">
+            email is required!
+        </small>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" formControlName="password" 
+        [class.is-invalid]="password.invalid && password.touched" >
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">
+            password is required!
+        </small>
+    </div>
+
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-outline-primary" [disabled]="personForm.invalid">Submit</button>
+  </form>
